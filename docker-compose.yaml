@@ -1,0 +1,22 @@
+services:
+  sftp-client:
+    image: sftp-client
+    container_name: sftp-client
+    build:
+      context: ./sftpclient
+    networks:
+      - sftp-network
+  sftp-server:
+    image: sftp-server
+    container_name: sftp-server
+    build:
+      context: ./sftpserver
+    ports:
+      - "2222:2222"
+    networks:
+      - sftp-network
+
+networks:
+  sftp-network:
+    name: sftp-network
+    driver: bridge

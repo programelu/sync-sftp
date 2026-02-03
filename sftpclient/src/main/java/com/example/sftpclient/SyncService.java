@@ -40,6 +40,7 @@ public class SyncService {
     }
 
     public List<SftpClient.DirEntry> listRemoteFolderWithDetails(String remoteDir) {
+        System.out.println("remote dir:::" + remoteDir);
         SftpClient.DirEntry[] entries =
                 sftpTemplate.execute(session -> session.list(remoteDir));
         return entries == null ? List.of() : List.of(entries);
